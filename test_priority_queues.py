@@ -171,6 +171,6 @@ def test_priority_queue_speed(QueueClass, timingfile):
     test_priority_queues.QueueClass = QueueClass
 
     timer = timeit.Timer('run_priority_queue(QueueClass, _large_dataset)', setup='from test_priority_queues import QueueClass, _large_dataset, run_priority_queue')
-    timing = timer.repeat(repeat=3, number=100)
+    timing = timer.repeat(repeat=3, number=10)
 
     timingfile.write(f'{QueueClass}: {timing}\n')
