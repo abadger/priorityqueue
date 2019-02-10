@@ -5,24 +5,30 @@ from collections import defaultdict, deque
 
 class PriorityQueue:
     def __init__(self):
-        self.store = defaultdict(deque)
-        self.priorities = []
+        self.ordered_store = []
+        self.lookup_store = defaultdict(deque)
 
     def push(self, value, priority=None):
         if priority is None:
             priority = 0
-        self.store[priority].append(value)
-        heapq.heappush(self.priorities, priority)
+
+        heapq.heappush(self.ordered_store, priority)
+        self.lookup_store[priority].append(value)
 
     def pop(self):
-        priority = heapq.heappop(self.priorities)
-        value = self.store[priority].popleft()
-        if not self.store[priority]:
-            del self.store[priority]
+        priority = heapq.heappop(self.ordered_store)
+        value = self.lookup_store[priority].popleft()
+
+        if not self.lookup_store[priority]:
+            del self.lookup_store[priority]
+
         return value
 
     def __len__(self):
-        return len(self.store)
+        total_len = 0
+        for queue in self.lookup_store.values():
+            total_len += len(queue)
+        return total_len
 
     def __bool__(self):
-        return True if self.priorities else False
+        return True if self.ordered_store else False
