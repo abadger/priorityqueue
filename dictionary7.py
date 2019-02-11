@@ -14,9 +14,8 @@ class PriorityQueue:
 
         if priority not in self.lookup_store:
             heapq.heappush(self.ordered_store, priority)
-            self.lookup_store[priority] = deque((value,))
-        else:
-            self.lookup_store[priority].append(value)
+            self.lookup_store[priority] = deque()
+        self.lookup_store[priority].append(value)
 
     def pop(self):
         priority = self.ordered_store[0]
