@@ -19,9 +19,10 @@ class PriorityQueue:
 
     def pop(self):
         priority = self.ordered_store[0]
-        value = self.lookup_store[priority].popleft()
+        store = self.lookup_store[priority]
+        value = store.popleft()
 
-        if not self.lookup_store[priority]:
+        if not store:
             heapq.heappop(self.ordered_store)
 
         return value

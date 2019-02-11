@@ -24,10 +24,10 @@ import priorityqueue
 # The highest priority to select from (also, the opposite of this is the lowest).
 # This is only the potential priorities.  Each entry is selected randomly from this list.
 # The more priorities, the less efficient the dictionary-based priority-queues
-PRIORITY_MAXIMA = 2**10
+PRIORITY_MAXIMA = 2**2
 
 # Number of entries into the queue
-LARGE_DATASET_LEN = 2**12
+LARGE_DATASET_LEN = 2**16
 
 # The number of entries that are added to the queue before the entire queue is processed
 # If LARGE_DATASET_LEN is larger than this, the queue will be emptied and refilled until
