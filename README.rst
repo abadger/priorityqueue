@@ -167,7 +167,8 @@ Very small correctness test
 * 10 entries
 * 7 priorities used in the range -20::80
 
-::
+.. code-block::
+
     <class 'priorityqueue.PriorityQueue'>: [6.9144796947948635, 6.984554157126695, 6.812578503973782]
     <class 'heapq1.PriorityQueue'>: [1.4143773941323161, 1.411599649116397, 1.393806123174727]
     <class 'heapqdict.PriorityQueue'>: [1.6279728161171079, 1.6371804689988494, 1.6638120491988957]
@@ -189,7 +190,8 @@ Large number of entries, few priorities
 * 2**3 + 1 possible priorities in the range -4::4
 * 2**16 chunksize
 
-::
+.. code-block::
+
     <class 'priorityqueue.PriorityQueue'>: [5.9570200820453465, 6.040737457107753, 6.037866178900003]
     <class 'heapq1.PriorityQueue'>: [2.756810828112066, 2.817298252135515, 2.7387360259890556]
     <class 'heapqdict.PriorityQueue'>: [1.4160102768801153, 1.4227407942526042, 1.414424885995686]
