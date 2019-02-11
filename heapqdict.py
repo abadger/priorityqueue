@@ -1,28 +1,27 @@
 # Copyright: (c) 2019, Toshio Kuratomi <a.badger@gmail.com>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 import heapq
-from collections import deque
+from collections import defaultdict, deque
 
 class PriorityQueue:
     def __init__(self):
         self.ordered_store = []
-        self.lookup_store = {}
+        self.lookup_store = defaultdict(deque)
 
     def push(self, value, priority=None):
         if priority is None:
             priority = 0
 
         if priority not in self.lookup_store:
-            store = deque()
-            heapq.heappush(self.ordered_store, (priority, store))
-            self.lookup_store[priority] = store
+            heapq.heappush(self.ordered_store, (priority, self.lookup_store[priority]))
         self.lookup_store[priority].append(value)
 
     def pop(self):
-        value = self.ordered_store[0][-1].popleft()
+        priority, store = self.ordered_store[0]
+        value = store.popleft()
 
-        if not self.ordered_store[0][-1]:
-            del self.lookup_store[self.ordered_store[0][0]]
+        if not store:
+            del self.lookup_store[priority]
             heapq.heappop(self.ordered_store)
 
         return value
