@@ -36,7 +36,7 @@ Implementations
 priorityqueue.py
 ----------------
 
-This is our baseline.  It uses the stdlib's `queue.PriorityQueue` with additions to work honor
+This is our baseline.  It uses the stdlib's `queue.PriorityQueue` with additions to honor
 insertion-order.  The internet notes that this is slower than custom code based on `heapq` because
 it is thread-safe.  That's understandable.  I wish that the stdlib implementation had
 insertion-order builtin, though.  If it did, then you could probably use this out of the box in the
